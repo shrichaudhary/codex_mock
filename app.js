@@ -28,14 +28,21 @@ import {
   getDownloadURL,
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
 
+import { getAnalytics } from "firebase/analytics";
+
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyDHJiBGfofCzK9ZBKdyxxGRInIBgmFOUWI",
+  authDomain: "net-dpp-site.firebaseapp.com",
+  projectId: "net-dpp-site",
+  storageBucket: "net-dpp-site.firebasestorage.app",
+  messagingSenderId: "958182963912",
+  appId: "1:958182963912:web:a8a1ac453a9b6cfa8c83fd",
+  measurementId: "G-PMXLN80BFE"
 };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
