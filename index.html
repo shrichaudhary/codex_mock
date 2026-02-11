@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSIR NET Mock Portal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">CSIR NET Mock Portal</div>
+      <div class="topbar-actions">
+        <span id="sessionBadge" class="badge">Logged out</span>
+        <button id="logoutBtn" class="btn ghost hidden">Logout</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="authSection" class="card">
+        <h2>Login / Register</h2>
+        <div class="grid two">
+          <div>
+            <h3>Login</h3>
+            <form id="loginForm" class="stack">
+              <input type="email" id="loginEmail" placeholder="Email" required />
+              <input type="password" id="loginPassword" placeholder="Password" required />
+              <button type="submit" class="btn primary">Login</button>
+            </form>
+          </div>
+          <div>
+            <h3>Student Registration</h3>
+            <form id="registerForm" class="stack">
+              <input type="text" id="registerName" placeholder="Full Name" required />
+              <input type="email" id="registerEmail" placeholder="Email" required />
+              <input type="password" id="registerPassword" placeholder="Password" required minlength="6" />
+              <button type="submit" class="btn">Register</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="studentSection" class="hidden">
+        <div class="card">
+          <h2>Student Dashboard</h2>
+          <div id="studentProfile" class="muted"></div>
+        </div>
+
+        <div class="card">
+          <h3>Available Quizzes</h3>
+          <div id="quizList" class="list"></div>
+        </div>
+
+        <div class="card">
+          <h3>My Attempts</h3>
+          <div id="attemptList" class="list"></div>
+        </div>
+      </section>
+
+      <section id="quizSection" class="hidden card">
+        <div class="quiz-head">
+          <h2 id="quizTitle">Quiz</h2>
+          <div id="timer" class="timer">00:00</div>
+        </div>
+        <div id="quizBody"></div>
+      </section>
+
+      <section id="adminSection" class="hidden">
+        <div class="card">
+          <h2>Admin Dashboard</h2>
+          <p class="muted">
+            Admins can manage students/admins, quizzes, and review attempts.
+          </p>
+        </div>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>Create Quiz from JSON</h3>
+            <form id="createQuizForm" class="stack">
+              <input type="text" id="quizTitleInput" placeholder="Quiz Title" required />
+              <input type="text" id="quizDescInput" placeholder="Description" />
+              <input type="number" id="quizDurationInput" placeholder="Duration (seconds)" value="1800" min="60" required />
+              <textarea id="quizJsonInput" rows="10" placeholder='{"questions":[...]}' required></textarea>
+              <button type="submit" class="btn primary">Create Quiz</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3>Upload Quiz JSON/PDF File</h3>
+            <form id="uploadFileForm" class="stack">
+              <input type="file" id="quizFileInput" accept=".json,.pdf" required />
+              <button type="submit" class="btn">Upload Source File</button>
+            </form>
+            <p class="muted tiny">
+              JSON files can be parsed into quiz data. PDF files are archived to Storage
+              for manual/advanced processing workflow.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>Students</h3>
+            <div id="studentManageList" class="list"></div>
+          </div>
+          <div class="card">
+            <h3>Admins</h3>
+            <form id="createAdminForm" class="row">
+              <input type="email" id="newAdminEmail" placeholder="Admin email" required />
+              <button type="submit" class="btn">Add Admin (by email)</button>
+            </form>
+            <div id="adminManageList" class="list"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Quiz Bank</h3>
+          <div id="quizManageList" class="list"></div>
+        </div>
+
+        <div class="card">
+          <h3>Attempt Reviews</h3>
+          <div id="attemptReviewList" class="list"></div>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
